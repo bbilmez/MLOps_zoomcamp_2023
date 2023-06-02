@@ -1,0 +1,61 @@
+[34m[1mwandb[39m[22m: [32m[41mERROR[39m[49m Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+Traceback (most recent call last):
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/public.py", line 5057, in _load
+    response = self.client.execute(
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/sdk/lib/retry.py", line 212, in wrapped_fn
+    return retrier(*args, **kargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/sdk/lib/retry.py", line 131, in __call__
+    result = self._call_fn(*args, **kwargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/public.py", line 252, in execute
+    return self._client.execute(*args, **kwargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 52, in execute
+    result = self._get_result(document, *args, **kwargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/vendor/gql-0.2.0/wandb_gql/client.py", line 60, in _get_result
+    return self.transport.execute(document, *args, **kwargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/sdk/lib/gql_request.py", line 56, in execute
+    request.raise_for_status()
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.wandb.ai/graphql
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/normalize.py", line 41, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/public.py", line 958, in artifact
+    artifact = Artifact(self.client, entity, project, artifact_name)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/public.py", line 4356, in __init__
+    self._load()
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/public.py", line 5069, in _load
+    raise ValueError(
+ValueError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/Users/banubilmez/Courses/MLOps/MLOps-zoomcamp-2023/homework_2/wandb/train.py", line 66, in <module>
+    run_train()
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/Users/banubilmez/Courses/MLOps/MLOps-zoomcamp-2023/homework_2/wandb/train.py", line 41, in run_train
+    artifact = wandb.use_artifact(data_artifact, type="preprocessed_dataset")
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 345, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 335, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2676, in use_artifact
+    artifact = public_api.artifact(type=type, name=name)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/normalize.py", line 87, in wrapper
+    raise CommError(message, err).with_traceback(sys.exc_info()[2])
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/normalize.py", line 41, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/public.py", line 958, in artifact
+    artifact = Artifact(self.client, entity, project, artifact_name)
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/public.py", line 4356, in __init__
+    self._load()
+  File "/Users/banubilmez/.pyenv/versions/3.10.4/lib/python3.10/site-packages/wandb/apis/public.py", line 5069, in _load
+    raise ValueError(
+wandb.errors.CommError: Attempted to fetch artifact without alias (e.g. "<artifact_name>:v3" or "<artifact_name>:latest")

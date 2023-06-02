@@ -1,0 +1,41 @@
+{
+    "os": "macOS-13.3.1-arm64-arm-64bit",
+    "python": "3.10.4",
+    "heartbeatAt": "2023-06-02T10:04:23.191861",
+    "startedAt": "2023-06-02T10:04:22.248772",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--wandb_project",
+        "WANDB_HOMEWORK2",
+        "--wandb_entity",
+        "banusacli",
+        "--data_artifact",
+        "./output"
+    ],
+    "state": "running",
+    "program": "/Users/banubilmez/Courses/MLOps/MLOps-zoomcamp-2023/homework_2/wandb/train.py",
+    "codePath": "Courses/MLOps/MLOps-zoomcamp-2023/homework_2/wandb/train.py",
+    "git": {
+        "remote": "https://github.com/bbilmez/ML-template.git",
+        "commit": "c1b99fa5c51ed5314ae488af89a3ea31533114ea"
+    },
+    "email": null,
+    "root": "/Users/banubilmez",
+    "host": "Banus-MacBook-Pro.local",
+    "username": "banubilmez",
+    "executable": "/Users/banubilmez/.pyenv/versions/3.10.4/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "disk": {
+        "total": 228.27386474609375,
+        "used": 157.28021240234375
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 8.0
+    }
+}
