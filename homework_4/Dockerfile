@@ -8,6 +8,8 @@ WORKDIR /app
 COPY model.bin /app/
 COPY batch.py /app/
 
+RUN mkdir -p /app/output
+
 COPY [ "Pipfile", "Pipfile.lock", "./" ]
 
 RUN pipenv install --system --deploy

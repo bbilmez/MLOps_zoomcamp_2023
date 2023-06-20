@@ -6,29 +6,28 @@ import pickle
 import pandas as pd
 import os
 
-
 year = int(sys.argv[1]) # 2021
 month = int(sys.argv[2]) #2
 taxi_type = (sys.argv[3]) # yellow
 
 input_file = f'https://d37ci6vzurychx.cloudfront.net/trip-data/{taxi_type}_tripdata_{year:04d}-{month:02d}.parquet'
 
+output_dir = 'output/' + taxi_type
+output_file = 'output/' + taxi_type + f'/{year:04d}-{month:02d}.parquet'
 
-output_dir = '/app/output/{taxi_type}'
 os.makedirs(output_dir, exist_ok=True)
-output_file = f'/app/output/{taxi_type}/{year:04d}-{month:02d}.parquet'
 
 
 with open('model.bin', 'rb') as f_in:
     dv, lr = pickle.load(f_in)
 
 
-categorical = ['PUlocationID', 'DOlocationID']
+categorical = ['PULocationID', 'DOLocationID']
 
 def read_data(filename):
     df = pd.read_parquet(filename)
-    
-    df['duration'] = df.dropOff_datetime - df.pickup_datetime
+
+    df['duration'] = df.tpep_dropoff_datetime - df.tpep_pickup_datetime
     df['duration'] = df.duration.dt.total_seconds() / 60
 
     df = df[(df.duration >= 1) & (df.duration <= 60)].copy()
@@ -48,6 +47,7 @@ y_pred = lr.predict(X_val)
 
 
 print('predicted mean duration:', y_pred.mean())
+print('standard deviation of predicted duration:', y_pred.std())
 
 
 df_result = pd.DataFrame()
